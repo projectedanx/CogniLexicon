@@ -1,0 +1,5 @@
+{
+  "name": "CogniLexicon: Semantic Mapper",
+  "description": "An application that acts as a 'semantic expansion engine' to generate multi-faceted semantic profiles for words and visualize their interconnectedness as a knowledge graph, powered by the Gemini API.",
+  "requestFramePermissions": []
+}
