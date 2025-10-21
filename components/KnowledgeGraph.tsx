@@ -19,6 +19,15 @@ interface Link extends d3.SimulationLinkDatum<Node> {
     value: number;
 }
 
+/**
+ * A component that renders a knowledge graph using D3.js.
+ * It visualizes concepts as nodes and their relationships as links.
+ * The graph is interactive, allowing nodes to be dragged.
+ *
+ * @param {KnowledgeGraphProps} props - The props for the component.
+ * @param {GraphData} props.data - The graph data, containing nodes and links.
+ * @returns {React.FC<KnowledgeGraphProps>} The knowledge graph component.
+ */
 export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ data }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);

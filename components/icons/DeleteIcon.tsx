@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * A trash can icon component.
+ * This component renders an SVG icon representing a delete or remove action.
+ *
+ * @param {React.SVGProps<SVGSVGElement>} props - Standard SVG properties.
+ * @returns {React.FC} The delete icon component.
+ */
 export const DeleteIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 

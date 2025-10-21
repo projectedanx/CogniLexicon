@@ -7,6 +7,13 @@ interface SemanticProfileProps {
   word: string;
 }
 
+/**
+ * A reusable component to create a styled section with a title.
+ * @param {object} props - The component props.
+ * @param {string} props.title - The title of the section.
+ * @param {React.ReactNode} props.children - The content of the section.
+ * @returns {React.FC} A section component.
+ */
 const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
   <div className="mb-6">
     <h3 className="text-xl font-semibold text-indigo-400 mb-2 border-b-2 border-indigo-500/30 pb-1">{title}</h3>
@@ -14,6 +21,14 @@ const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title
   </div>
 );
 
+/**
+ * A component that displays a list of items in a section.
+ * Returns null if the items array is empty.
+ * @param {object} props - The component props.
+ * @param {string} props.title - The title of the list section.
+ * @param {string[]} props.items - The array of strings to display.
+ * @returns {React.FC | null} A list section component or null.
+ */
 const ListSection: React.FC<{ title: string; items: string[] }> = ({ title, items }) => {
   if (!items || items.length === 0) return null;
   return (
@@ -29,6 +44,15 @@ const ListSection: React.FC<{ title: string; items: string[] }> = ({ title, item
   );
 };
 
+/**
+ * Renders the semantic profile of a word, including its definition, etymology, and related concepts.
+ * The component is structured into sections for clarity.
+ *
+ * @param {SemanticProfileProps} props - The props for the component.
+ * @param {SemanticProfileData} props.data - The semantic profile data to display.
+ * @param {string} props.word - The word or concept being displayed.
+ * @returns {React.FC<SemanticProfileProps>} The semantic profile component.
+ */
 export const SemanticProfile: React.FC<SemanticProfileProps> = ({ data, word }) => {
   return (
     <div className="bg-gray-800/50 rounded-lg p-6 animate-fade-in border border-gray-700/50">

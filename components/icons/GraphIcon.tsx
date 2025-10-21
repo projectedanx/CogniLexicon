@@ -1,6 +1,13 @@
 
 import React from 'react';
 
+/**
+ * A graph icon component.
+ * This component renders an SVG icon representing a network or graph structure.
+ *
+ * @param {React.SVGProps<SVGSVGElement>} props - Standard SVG properties.
+ * @returns {React.FC} The graph icon component.
+ */
 export const GraphIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 

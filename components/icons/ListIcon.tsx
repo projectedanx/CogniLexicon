@@ -1,6 +1,13 @@
 
 import React from 'react';
 
+/**
+ * A list icon component.
+ * This component renders an SVG icon representing a list or menu.
+ *
+ * @param {React.SVGProps<SVGSVGElement>} props - Standard SVG properties.
+ * @returns {React.FC} The list icon component.
+ */
 export const ListIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
