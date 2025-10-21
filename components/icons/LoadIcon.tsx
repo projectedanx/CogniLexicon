@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * A load icon component, represented by a lightning bolt.
+ * This component renders an SVG icon used to trigger a "load" or "generate" action.
+ *
+ * @param {React.SVGProps<SVGSVGElement>} props - Standard SVG properties.
+ * @returns {React.FC} The load icon component.
+ */
 export const LoadIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <svg 
         xmlns="http://www.w3.org/2000/svg" 

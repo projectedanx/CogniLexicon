@@ -10,6 +10,17 @@ interface MirrorTokenManagerProps {
     onLoadToken: (concept: string) => void;
 }
 
+/**
+ * A component for managing Mirror Tokens.
+ * It provides a form to add new tokens and a list to display, load, and remove existing tokens.
+ *
+ * @param {MirrorTokenManagerProps} props - The props for the component.
+ * @param {MirrorToken[]} props.tokens - The current list of mirror tokens.
+ * @param {(token: MirrorToken) => void} props.onAddToken - Callback to add a new token.
+ * @param {(tokenName: string) => void} props.onRemoveToken - Callback to remove a token.
+ * @param {(concept: string) => void} props.onLoadToken - Callback to load the concept of a token.
+ * @returns {React.FC<MirrorTokenManagerProps>} The mirror token manager component.
+ */
 export const MirrorTokenManager: React.FC<MirrorTokenManagerProps> = ({ tokens, onAddToken, onRemoveToken, onLoadToken }) => {
     const [name, setName] = useState('');
     const [concept, setConcept] = useState('');

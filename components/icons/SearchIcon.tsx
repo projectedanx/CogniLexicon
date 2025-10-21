@@ -1,6 +1,13 @@
 
 import React from 'react';
 
+/**
+ * A search icon component.
+ * This component renders a magnifying glass SVG icon.
+ *
+ * @param {React.SVGProps<SVGSVGElement>} props - Standard SVG properties.
+ * @returns {React.FC} The search icon component.
+ */
 export const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

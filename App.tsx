@@ -11,6 +11,14 @@ import { GraphIcon } from './components/icons/GraphIcon';
 import { MirrorTokenManager } from './components/MirrorTokenManager';
 import { useMirrorTokens } from './hooks/useMirrorTokens';
 
+/**
+ * The main application component for CogniLexicon.
+ * It manages the application's state, including the search query, semantic data,
+ * loading status, errors, and the active view (profile or graph).
+ * It orchestrates data fetching and renders the appropriate UI components.
+ *
+ * @returns {React.FC} The root component of the application.
+ */
 const App: React.FC = () => {
   const [query, setQuery] = useState<string>('');
   const [semanticProfile, setSemanticProfile] = useState<SemanticProfileData | null>(null);

@@ -3,6 +3,16 @@ import { MirrorToken } from '../types';
 
 const STORAGE_KEY = 'cogniLexiconMirrorTokens';
 
+/**
+ * A custom React hook for managing "Mirror Tokens" in local storage.
+ * Mirror Tokens are saved search queries or concepts.
+ * This hook provides functionalities to add, remove, and retrieve these tokens.
+ *
+ * @returns An object containing the current list of tokens and functions to modify them.
+ * @property {MirrorToken[]} tokens - The current array of saved mirror tokens.
+ * @property {(token: MirrorToken) => void} addToken - Function to add a new token. It prevents duplicates (case-insensitive).
+ * @property {(tokenName: string) => void} removeToken - Function to remove a token by its name.
+ */
 export const useMirrorTokens = () => {
     const [tokens, setTokens] = useState<MirrorToken[]>([]);
 

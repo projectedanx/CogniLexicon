@@ -61,6 +61,17 @@ const responseSchema = {
   },
 };
 
+/**
+ * Fetches semantic data for a given query from the Gemini API.
+ * This function constructs a detailed prompt to generate a semantic profile and a knowledge graph.
+ * It then calls the Gemini API, parses the JSON response, and performs validation and normalization.
+ * The function also includes robust error handling for API and network-related issues.
+ *
+ * @param query The word or concept to fetch semantic data for.
+ * @returns A promise that resolves to an object containing the semantic profile and knowledge graph data.
+ * @throws Throws an error if the API call fails, the response is malformed, or a network error occurs.
+ * The error message is tailored to the specific type of error (e.g., network, API rate limit, server error).
+ */
 export const getSemanticData = async (query: string): Promise<{ profile: SemanticProfileData; graph: GraphData }> => {
     const prompt = `
         For the concept "${query}", generate a detailed semantic profile and a knowledge graph.
