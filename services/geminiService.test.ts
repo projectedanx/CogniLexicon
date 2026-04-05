@@ -1,4 +1,4 @@
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
 import { getSemanticData } from './geminiService';
 
 // Mock the @google/genai module
@@ -25,6 +25,14 @@ const mockGenerateContent = (new GoogleGenAI() as any).models.generateContent;
 
 
 describe('getSemanticData', () => {
+    beforeAll(() => {
+        vi.spyOn(console, 'error').mockImplementation(() => {});
+    });
+
+    afterAll(() => {
+        vi.restoreAllMocks();
+    });
+
     beforeEach(() => {
         vi.clearAllMocks();
     });
