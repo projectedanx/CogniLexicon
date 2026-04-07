@@ -74,3 +74,15 @@ In the project directory, you can run the following scripts:
 ---
 
 This project was generated from an AI Studio app. You can view your app in AI Studio here: https://ai.studio/apps/drive/1wI817e9qzQJdo7DdZ7Jw_iWFIw-ADFYE
+
+## Product Roadmap (V2.0)
+
+We are actively developing the next generation of CogniLexicon, transforming it into a massively parallel, paraconsistent knowledge discovery platform. Our roadmap includes:
+
+-   **Cross-Lingual Semantic Resonance:** Map concepts across linguistic boundaries to identify cultural nuance and semantic drift.
+-   **Temporal Concept Evolution:** Visualize how definitions and associations shift over historical timelines.
+-   **Multi-User Dialectical Graphing:** Enable real-time, collaborative epistemic workspaces that embrace and visualize conceptual tension.
+-   **Automated Ontology Export:** Seamlessly integrate with enterprise data systems via OWL, RDF, and JSON-LD serialization.
+-   **Cognitive Bias Detection:** Automatically identify and flag homophily, echo chambers, and logical fallacies in generated graphs.
+
+*See `product_features.md` for detailed user stories and acceptance criteria.*
