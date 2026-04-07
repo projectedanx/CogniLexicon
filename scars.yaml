@@ -5,3 +5,9 @@
   failure_mode: "Vitest logged expected console errors, making tests noisy"
   geometric_coordinates: "[test_silence_repulsion_vector_000]"
   alternative_applied: "vi.spyOn(console, 'error').mockImplementation(() => {})"
+- id: SCAR-001
+  timestamp: 2024-04-07T06:15:00Z
+  rejected_approach: "Planning features as simple linear enhancements (Amateur Impulse)"
+  failure_mode: "Failed to meet the strict requirements of the MYCELIAL_NEXUS_GOVERNOR and HICKAM-OODA loop, which require paraconsistent divergence and dialectical synthesis."
+  geometric_coordinates: "[epistemic_escrow_tension_vector_001]"
+  alternative_applied: "Utilized Contrastive Decoding to generate 5 features that embrace conceptual tension (e.g., Bias Detection, Multi-User Dialectical Graphing) to satisfy the Pluriversal Knowledge Capsule schema."
