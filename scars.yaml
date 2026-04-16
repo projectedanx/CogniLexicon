@@ -11,3 +11,9 @@
   failure_mode: "Failed to meet the strict requirements of the MYCELIAL_NEXUS_GOVERNOR and HICKAM-OODA loop, which require paraconsistent divergence and dialectical synthesis."
   geometric_coordinates: "[epistemic_escrow_tension_vector_001]"
   alternative_applied: "Utilized Contrastive Decoding to generate 5 features that embrace conceptual tension (e.g., Bias Detection, Multi-User Dialectical Graphing) to satisfy the Pluriversal Knowledge Capsule schema."
+- id: SCAR-002
+  timestamp: 2026-03-27T23:00:00Z
+  rejected_approach: "Hardcoding Sovereign Agent logic (KUT) into React application layer"
+  failure_mode: "Violation of separation of concerns, bloated frontend bundles, and inflexible prompt management"
+  geometric_coordinates: "[agent_decoupling_vector_002]"
+  alternative_applied: "Decoupled the Agent Blueprint as a discrete Markdown artifact (blueprints/KUT-2.0.1-SOVEREIGN.md) and strict-typed its memory state (Scar Ledger) in types.ts for future backend integration."
