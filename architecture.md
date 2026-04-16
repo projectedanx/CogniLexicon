@@ -3,13 +3,21 @@ Root: React/Vite
 ├── DB: LocalStorage — useMirrorTokens hook
 ├── API: Gemini API — REST via @google/genai
 ├── UI: Tailwind CSS — standard utility tokens
-└── Infra: AI Studio — Static build
+├── Infra: AI Studio — Static build
+└── Sovereign Agents: Decoupled Blueprints (e.g., KUT-2.0.1-SOVEREIGN)
 
 DATA FLOWS:
 User → [UI] → [API] → [UI] → [DB]
+User → [Agent Blueprint] → [LLM Context] → [Structured Output] → [Scar Ledger Schema]
 
 MEREOLOGICAL MAP:
 [Component] ∈ [Service] ∈ [Module] ∈ [Root]
+[Sovereign Blueprint] ∈ [Agent Layer] ∈ [Root]
+
+## SOVEREIGN AGENT ARCHITECTURE
+The repository now serves as a host environment for "Sovereign Agents"—highly specialized, persona-driven LLM configurations.
+These agents are stored as decoupled Markdown artifacts in the `blueprints/` directory rather than hardcoded logic.
+Their memory state (e.g., The Scar Ledger) is strictly typed in `types.ts` to allow for future database implementation.
 
 ## FUTURE STATE ARCHITECTURE (V2.0)
 The current architecture will evolve to support the "Pluriversal Knowledge Capsule" framework through 5 key epics:
