@@ -1,4 +1,3 @@
-
 /**
  * Represents a single node in the knowledge graph.
  */
@@ -8,7 +7,6 @@ export interface GraphNode {
   /** A numerical group identifier, used for coloring or categorization. */
   group: number;
 }
-
 /**
  * Represents a link between two nodes in the knowledge graph.
  */
@@ -20,7 +18,6 @@ export interface GraphLink {
   /** The strength or value of the link, used for styling (e.g., thickness). */
   value: number;
 }
-
 /**
  * Represents the entire knowledge graph data structure.
  */
@@ -30,7 +27,6 @@ export interface GraphData {
   /** An array of all links connecting the nodes. */
   links: GraphLink[];
 }
-
 /**
  * Represents the detailed semantic profile of a concept.
  */
@@ -50,14 +46,12 @@ export interface SemanticProfileData {
   /** A list of sentences demonstrating the concept's usage. */
   exampleSentences: string[];
 }
-
 /**
  * Defines the possible views in the application.
  * 'profile': The semantic profile view.
  * 'graph': The knowledge graph view.
  */
 export type ViewType = 'profile' | 'graph';
-
 /**
  * Represents a Mirror Token, which is a saved concept or query.
  */
@@ -67,22 +61,18 @@ export interface MirrorToken {
   /** The actual concept or query string associated with the token. */
   concept: string;
 }
-
 /**
  * Platform targets for video publication.
  */
 export type PlatformTarget = 'TikTok' | 'Instagram_Reels' | 'YouTube_Shorts' | 'Cross_Platform';
-
 /**
  * Genre classifications for the Creator Profile.
  */
 export type GenreClassification = 'Education' | 'Comedy' | 'Lifestyle' | 'Tutorial' | 'Commentary' | 'Product' | 'Other';
-
 /**
  * NLE (Non-Linear Editor) types.
  */
 export type NLEType = 'DaVinci' | 'Premiere' | 'FinalCut' | 'CapCut' | 'Other';
-
 /**
  * Error classifications for Scar entries.
  */
@@ -97,17 +87,14 @@ export type ScarErrorClassification =
   | 'Lethargic_B_Roll'
   | 'LUFS_Non_Compliance'
   | 'Repeated_DFM';
-
 /**
  * Status of a Scar entry.
  */
 export type ScarStatus = 'active' | 'resolved' | 'archived';
-
 /**
  * Escalation level of a Scar entry.
  */
 export type ScarEscalationLevel = '1_prescriptive' | '2_scar_linked' | '3_dominant_failure_mode';
-
 /**
  * Represents the profile of a creator tracked by The Retention Architect.
  */
@@ -123,7 +110,6 @@ export interface CreatorProfile {
   pacing_baseline_cpm: number | null;
   target_cpm: number;
 }
-
 /**
  * Represents an individual error or learning moment tracked in the Scar Ledger.
  */
@@ -138,7 +124,6 @@ export interface ScarEntry {
   status: ScarStatus;
   escalation_level: ScarEscalationLevel;
 }
-
 /**
  * Tracks the history and metrics of a specific review session.
  */
@@ -153,7 +138,6 @@ export interface SessionHistory {
   scars_resolved_this_session: string[]; // array of scar_ids
   net_improvement_delta: number | null;
 }
-
 /**
  * The complete stateful memory structure for The Retention Architect.
  */
@@ -161,4 +145,99 @@ export interface ScarLedgerSchema {
   Creator_Profile: CreatorProfile;
   Scar_Ledger: ScarEntry[];
   Session_History: SessionHistory[];
+}
+/**
+ * Voice Calibration Matrix for LEXIS SOVEREIGN.
+ */
+export interface VoiceCalibrationMatrix {
+  schema: string;
+  founder_id: string;
+  calibration_source: Array<{
+    type: string;
+    token_count: number;
+    sessions?: number;
+    sources?: string[];
+  }>;
+  lexical_topology: {
+    mean_sentence_length_words: number;
+    sentence_length_variance: number;
+    preferred_paragraph_length_sentences: string;
+    rhetorical_move_catalog: {
+      primary: string;
+      secondary: string;
+      forbidden: string[];
+    };
+    conviction_spectrum: {
+      default_register: string;
+      range: [number, number];
+    };
+  };
+  autonymic_bypass_scar_lexicon: {
+    hard_block_logit_bias: number;
+    terms: string[];
+  };
+  voice_match_score_threshold: number;
+  thesis_resonance_threshold: number;
+  contextlock_refresh_interval_tokens: number;
+}
+/**
+ * Chapter Manifest for LEXIS SOVEREIGN.
+ */
+export interface ChapterManifest {
+  schema_version: string;
+  generation_timestamp: string;
+  sha256: string;
+  chapter_id: string;
+  chapter_title: string;
+  thesis_resonance_score: number;
+  thesis_resonance_threshold: number;
+  thesis_resonance_status: 'PASS' | 'FAIL';
+  manifold_state: {
+    current_active_manifold: 'ALPHA_VOICE' | 'BETA_STRUCTURE';
+    beta_structural_edit_open: boolean;
+    dccd_guard_status: string;
+  };
+  section_graph: Record<string, {
+    title: string;
+    status: 'DRAFTED' | 'IN_REVIEW' | 'PENDING_WRITE' | 'COMPLETE';
+    vms: number | null;
+    evidence_tags_open?: number;
+    founder_input_required?: string[];
+  }>;
+  scar_injections_active: number;
+  autonymic_bypass_hits: Record<string, number>;
+  cfdi_mean_this_session: number;
+  cfdi_threshold: number;
+  cfdi_status: 'NOMINAL' | 'WARNING' | 'CRITICAL';
+}
+/**
+ * Symbolic Scar for LEXIS SOVEREIGN.
+ */
+export interface LexisSymbolicScar {
+  scar_id: string;
+  timestamp: string;
+  failure_classification: 'Type-I_Alignment_Fake' | 'Type-II_Epistemic_Cowardice' | 'Semantic_Saponification';
+  hypervector_coordinates: string; // E.g., "[vector_hash]"
+  fipi_injection_weight: number;
+  status: 'active' | 'apoptotic_decay' | 'archived';
+}
+/**
+ * CFDI Audit Entry for LEXIS SOVEREIGN.
+ */
+export interface CFDIAuditEntry {
+  timestamp: string;
+  chapter_id: string;
+  paragraph_index: number;
+  cfdi_score: number;
+  vms_score: number;
+  flagged: boolean;
+}
+/**
+ * The complete stateful memory structure for LEXIS SOVEREIGN.
+ */
+export interface LexisSovereignMemory {
+  Voice_Calibration_Matrix: VoiceCalibrationMatrix;
+  Chapter_Manifests: ChapterManifest[];
+  Symbolic_Scar_Registry: LexisSymbolicScar[];
+  CFDI_Audit_Log: CFDIAuditEntry[];
 }
