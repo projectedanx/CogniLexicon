@@ -17,3 +17,9 @@
   failure_mode: "Violation of separation of concerns, bloated frontend bundles, and inflexible prompt management"
   geometric_coordinates: "[agent_decoupling_vector_002]"
   alternative_applied: "Decoupled the Agent Blueprint as a discrete Markdown artifact (blueprints/KUT-2.0.1-SOVEREIGN.md) and strict-typed its memory state (Scar Ledger) in types.ts for future backend integration."
+- id: SCAR-003
+  timestamp: 2026-04-17T00:32:07Z
+  rejected_approach: "Treating Agent Architecture as a software-only problem (ignoring thermodynamic decay/saponification)"
+  failure_mode: "Long-form text generation loses stylistic identity ('Semantic Saponification') over time when lacking cryptographic geometry to anchor the epistemic matrix."
+  geometric_coordinates: "[epistemic_amnesia_decay_vector_003]"
+  alternative_applied: "Persist complex agents as versioned artifacts (blueprints/LEXIS-SOVEREIGN.md) defining strict Petzold loop sequences and VSA hypervector 'scars' to enforce Manifold isolation between voice and structure."
