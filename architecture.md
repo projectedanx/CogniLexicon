@@ -18,6 +18,9 @@ Their memory state (e.g., The Scar Ledger) is strictly typed in `types.ts` to al
 Currently Managed Agents:
 - **KUT (Retention Architect):** Video editing workflow and pacing enforcement.
 - **LEXIS SOVEREIGN (The Auteur Co-Author):** Thought-leadership ghostwriting and deterministic publishing artifact generation.
+## COGNITIVE BYTECODE & PROGRESSIVE DISCLOSURE
+The repository integrates the Cognitive Bytecode standard outlined in `LEXICON.md` (DRP-LEXICON-992). Core components like the Gemini API prompt utilize Progressive Disclosure Level (PDL) decorators (`+++DCCDSchemaGuard`, `+++MereologyRoute`, `+++ContextLock`) to mitigate Lexical Saponification and enforce topological bridging across domains.
+
 ## FUTURE STATE ARCHITECTURE (V2.0)
 The current architecture will evolve to support the "Pluriversal Knowledge Capsule" framework through 5 key epics:
 1.  **Cross-Lingual Semantic Resonance:** Extend `services/geminiService.ts` to query multi-lingual embedding dimensions. Update `GraphData` schema to support language tags.

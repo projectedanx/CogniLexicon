@@ -76,6 +76,10 @@ export const getSemanticData = async (query: string): Promise<{ profile: Semanti
     const prompt = `
         For the concept "${query}", generate a detailed semantic profile and a knowledge graph.
 
+        +++DCCDSchemaGuard(schema="SEMANTIC_PROFILE", enforcement="strict")
+        +++MereologyRoute(relation_type="Concept-Operationalization", transitivity_check=true)
+        +++ContextLock(anchor="QUERY_CONCEPT", refresh_interval=2048)
+
         The semantic profile must include:
         - A concise definition.
         - The etymology or origin of the word/concept.
