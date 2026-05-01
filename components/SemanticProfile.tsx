@@ -73,6 +73,17 @@ export const SemanticProfile: React.FC<SemanticProfileProps> = ({ data, word }) 
         <ListSection title="Antonyms" items={data.antonyms} />
       </div>
       
+
+      {data.dialecticalTensions && data.dialecticalTensions.length > 0 && (
+        <Section title="Dialectical Tensions & Contradictions">
+          <ul className="list-disc list-inside space-y-2 text-red-300 bg-red-900/20 p-4 rounded-md border border-red-800/50">
+            {data.dialecticalTensions.map((tension, index) => (
+              <li key={index}>{tension}</li>
+            ))}
+          </ul>
+        </Section>
+      )}
+
       <Section title="Example Sentences">
         <ul className="list-disc list-inside space-y-2 text-gray-300">
           {data.exampleSentences.map((sentence, index) => (

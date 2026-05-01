@@ -17,7 +17,8 @@ const responseSchema = {
         "synonyms",
         "antonyms",
         "conceptualNeighbors",
-        "exampleSentences"
+        "exampleSentences",
+        "dialecticalTensions"
       ],
       properties: {
         definition: { type: Type.STRING, description: "A concise definition." },
@@ -28,6 +29,7 @@ const responseSchema = {
         conceptualNeighbors: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Related but not synonymous concepts." },
 
         exampleSentences: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Example sentences demonstrating usage." },
+        dialecticalTensions: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Irreconcilable contradictions or dialectical tensions related to the concept." },
         biasAnalysis: {
           type: Type.OBJECT,
           description: "Cognitive bias analysis of the semantic profile.",
@@ -64,6 +66,7 @@ const responseSchema = {
             properties: {
               id: { type: Type.STRING, description: "The name of the concept/node." },
               group: { type: Type.INTEGER, description: "A number representing the node's group. The main concept should be group 1." },
+              isTensionNode: { type: Type.BOOLEAN, description: "True if this node represents a dialectical contradiction or opposing viewpoint." },
             },
           },
         },
@@ -116,6 +119,8 @@ export const getSemanticData = async (query: string): Promise<{ profile: Semanti
         - A list of 3-5 conceptual neighbors (related but not synonymous concepts).
 
         - At least 3 example sentences demonstrating its usage.
+        - A list of 3-5 dialectical tensions (irreconcilable contradictions or opposing viewpoints) related to the concept, mapped via S5-Modal Attention to prevent semantic annihilation.
+
         - A cognitive bias analysis including a homophily index (0.0 to 1.0), detected biases, and orthogonal concepts.
 
 
@@ -124,6 +129,8 @@ export const getSemanticData = async (query: string): Promise<{ profile: Semanti
         - Other nodes should be related concepts like synonyms, antonyms, and conceptual neighbors.
         - Links must connect the central node to the related concepts. The 'value' of the link should represent the strength of the relationship (e.g., synonyms have a higher value).
         - The graph must have at least 5 nodes (including the central one) and 4 links originating from the central node.
+        - You MUST include at least 2 "Tension Nodes" in the graph that represent these dialectical tensions. For these nodes, you must set \"isTensionNode\": true and connect them to the central node or other relevant concepts.
+
         - All node 'id's in links must correspond to an 'id' in the nodes list.
 
         The output MUST be a single valid JSON object.
@@ -168,6 +175,7 @@ export const getSemanticData = async (query: string): Promise<{ profile: Semanti
             antonyms: Array.isArray(profile.antonyms) ? profile.antonyms : [],
             conceptualNeighbors: Array.isArray(profile.conceptualNeighbors) ? profile.conceptualNeighbors : [],
             exampleSentences: Array.isArray(profile.exampleSentences) ? profile.exampleSentences : [],
+            dialecticalTensions: Array.isArray(profile.dialecticalTensions) ? profile.dialecticalTensions : [],
             biasAnalysis: profile.biasAnalysis || {
                 homophilyIndex: 0,
                 detectedBiases: [],

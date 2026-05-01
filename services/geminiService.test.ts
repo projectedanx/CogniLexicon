@@ -47,6 +47,7 @@ describe('getSemanticData', () => {
                 antonyms: ['certainty'],
                 conceptualNeighbors: ['evaluation'],
                 exampleSentences: ['This is a test.'],
+            dialecticalTensions: [],
                 biasAnalysis: {
                     homophilyIndex: 0,
                     detectedBiases: [],
@@ -118,6 +119,7 @@ describe('getSemanticData', () => {
                 antonyms: ['certainty'],
                 conceptualNeighbors: ['evaluation'],
                 exampleSentences: ['This is a test.'],
+            dialecticalTensions: [],
                 biasAnalysis: {
                     homophilyIndex: 0,
                     detectedBiases: [],

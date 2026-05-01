@@ -6,6 +6,8 @@ export interface GraphNode {
   id: string;
   /** A numerical group identifier, used for coloring or categorization. */
   group: number;
+  /** Indicates if this node represents a dialectical contradiction. */
+  isTensionNode?: boolean;
 }
 /**
  * Represents a link between two nodes in the knowledge graph.
@@ -64,6 +66,8 @@ export interface SemanticProfileData {
   conceptualNeighbors: string[];
   /** A list of sentences demonstrating the concept's usage. */
   exampleSentences: string[];
+  /** A list of irreconcilable contradictions or dialectical tensions related to the concept. */
+  dialecticalTensions?: string[];
 }
 /**
  * Defines the possible views in the application.
