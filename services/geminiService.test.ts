@@ -47,6 +47,11 @@ describe('getSemanticData', () => {
                 antonyms: ['certainty'],
                 conceptualNeighbors: ['evaluation'],
                 exampleSentences: ['This is a test.'],
+                biasAnalysis: {
+                    homophilyIndex: 0,
+                    detectedBiases: [],
+                    orthogonalConcepts: []
+                }
             },
             graph: {
                 nodes: [{ id: 'test', group: 1 }],
@@ -113,6 +118,11 @@ describe('getSemanticData', () => {
                 antonyms: ['certainty'],
                 conceptualNeighbors: ['evaluation'],
                 exampleSentences: ['This is a test.'],
+                biasAnalysis: {
+                    homophilyIndex: 0,
+                    detectedBiases: [],
+                    orthogonalConcepts: []
+                }
             },
             graph: {
                 nodes: [],

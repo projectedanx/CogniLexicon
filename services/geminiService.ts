@@ -26,7 +26,30 @@ const responseSchema = {
         synonyms: { type: Type.ARRAY, items: { type: Type.STRING }, description: "A list of 3-5 synonyms." },
         antonyms: { type: Type.ARRAY, items: { type: Type.STRING }, description: "A list of 3-5 antonyms." },
         conceptualNeighbors: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Related but not synonymous concepts." },
+
         exampleSentences: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Example sentences demonstrating usage." },
+        biasAnalysis: {
+          type: Type.OBJECT,
+          description: "Cognitive bias analysis of the semantic profile.",
+          required: ["homophilyIndex", "detectedBiases", "orthogonalConcepts"],
+          properties: {
+            homophilyIndex: { type: Type.NUMBER, description: "Homophily index from 0.0 to 1.0." },
+            detectedBiases: {
+              type: Type.ARRAY,
+              items: {
+                type: Type.OBJECT,
+                required: ["type", "description", "severity"],
+                properties: {
+                  type: { type: Type.STRING },
+                  description: { type: Type.STRING },
+                  severity: { type: Type.STRING, enum: ["low", "medium", "high"] }
+                }
+              }
+            },
+            orthogonalConcepts: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Concepts to counter the biases." }
+          }
+        }
+
       },
     },
     graph: {
@@ -74,20 +97,27 @@ const responseSchema = {
  */
 export const getSemanticData = async (query: string): Promise<{ profile: SemanticProfileData; graph: GraphData }> => {
     const prompt = `
+
         For the concept "${query}", generate a detailed semantic profile and a knowledge graph.
 
         +++DCCDSchemaGuard(schema="SEMANTIC_PROFILE", enforcement="strict")
         +++MereologyRoute(relation_type="Concept-Operationalization", transitivity_check=true)
         +++ContextLock(anchor="QUERY_CONCEPT", refresh_interval=2048)
+        +++ParaconsistentLens[Contradiction -> Opportunity]
+        +++EpistemicEscrow(cfd_threshold=0.15)
 
         The semantic profile must include:
+
         - A concise definition.
         - The etymology or origin of the word/concept.
         - Primary conceptual domains it belongs to (e.g., "Physics", "Philosophy", "Art").
         - A list of 3-5 synonyms.
         - A list of 3-5 antonyms.
         - A list of 3-5 conceptual neighbors (related but not synonymous concepts).
+
         - At least 3 example sentences demonstrating its usage.
+        - A cognitive bias analysis including a homophily index (0.0 to 1.0), detected biases, and orthogonal concepts.
+
 
         The knowledge graph must represent the relationships between the core concept and its related terms.
         - The central node must be the query concept "${query}" itself, assigned to group 1.
@@ -138,6 +168,11 @@ export const getSemanticData = async (query: string): Promise<{ profile: Semanti
             antonyms: Array.isArray(profile.antonyms) ? profile.antonyms : [],
             conceptualNeighbors: Array.isArray(profile.conceptualNeighbors) ? profile.conceptualNeighbors : [],
             exampleSentences: Array.isArray(profile.exampleSentences) ? profile.exampleSentences : [],
+            biasAnalysis: profile.biasAnalysis || {
+                homophilyIndex: 0,
+                detectedBiases: [],
+                orthogonalConcepts: []
+            }
         };
 
         const validatedGraph: GraphData = {

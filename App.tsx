@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { SearchBar } from './components/SearchBar';
 import { SemanticProfile } from './components/SemanticProfile';
+import { CognitiveBiasPanel } from './components/CognitiveBiasPanel';
+
 import { KnowledgeGraph } from './components/KnowledgeGraph';
 import { Loader } from './components/Loader';
 import { ErrorMessage } from './components/ErrorMessage';
@@ -121,9 +123,13 @@ const App: React.FC = () => {
 
         {semanticProfile && (
             <>
-            <ViewSwitcher />
-            <div className="mt-4">
-                {activeView === 'profile' && <SemanticProfile data={semanticProfile} word={query} />}
+            <ViewSwitcher /><div className="mt-4">
+                {activeView === 'profile' && (
+                  <>
+                    <SemanticProfile data={semanticProfile} word={query} />
+                    {semanticProfile.biasAnalysis && <CognitiveBiasPanel biasData={semanticProfile.biasAnalysis} />}
+                  </>
+                )}
                 {activeView === 'graph' && graphData && <KnowledgeGraph data={graphData} />}
             </div>
             </>

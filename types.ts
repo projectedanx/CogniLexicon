@@ -30,7 +30,26 @@ export interface GraphData {
 /**
  * Represents the detailed semantic profile of a concept.
  */
+
+/**
+ * Represents the cognitive bias analysis of the generated profile and graph.
+ */
+export interface BiasAnalysisData {
+  /** The calculated homophily index (0.0 to 1.0). High values indicate echo chamber risk. */
+  homophilyIndex: number;
+  /** A list of detected cognitive biases or logical fallacies. */
+  detectedBiases: Array<{
+    type: string;
+    description: string;
+    severity: 'low' | 'medium' | 'high';
+  }>;
+  /** A list of orthogonal concepts suggested to counter the detected biases. */
+  orthogonalConcepts: string[];
+}
+
 export interface SemanticProfileData {
+  /** Cognitive bias analysis. */
+  biasAnalysis?: BiasAnalysisData;
   /** A concise definition of the concept. */
   definition: string;
   /** The origin or etymology of the concept. */
