@@ -8,6 +8,8 @@ export interface GraphNode {
   group: number;
   /** Indicates if this node represents a dialectical contradiction. */
   isTensionNode?: boolean;
+  /** The language of the node (e.g., 'en', 'es', 'ja'). Used for cross-lingual resonance. */
+  language?: string;
 }
 /**
  * Represents a link between two nodes in the knowledge graph.
@@ -68,6 +70,10 @@ export interface SemanticProfileData {
   exampleSentences: string[];
   /** A list of irreconcilable contradictions or dialectical tensions related to the concept. */
   dialecticalTensions?: string[];
+  /** The closest equivalent concept in the target language. */
+  targetEquivalent?: string;
+  /** Analysis of the semantic drift or lost meaning between the source and target concepts. */
+  semanticDrift?: string;
 }
 /**
  * Defines the possible views in the application.

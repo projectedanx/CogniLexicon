@@ -31,7 +31,7 @@ const App: React.FC = () => {
   
   const { tokens, addToken, removeToken } = useMirrorTokens();
 
-  const handleSearch = useCallback(async (searchQuery: string) => {
+  const handleSearch = useCallback(async (searchQuery: string, targetLanguage?: string) => {
     if (!searchQuery.trim()) return;
 
     setIsLoading(true);
@@ -40,7 +40,7 @@ const App: React.FC = () => {
     setGraphData(null);
 
     try {
-      const result = await getSemanticData(searchQuery);
+      const result = await getSemanticData(searchQuery, targetLanguage);
       setQuery(searchQuery); // Set query only on successful search
       setSemanticProfile(result.profile);
       setGraphData(result.graph);

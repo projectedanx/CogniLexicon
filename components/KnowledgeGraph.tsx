@@ -9,7 +9,12 @@ interface KnowledgeGraphProps {
 
 // Fix: Simplify Node interface to correctly inherit properties from d3.SimulationNodeDatum.
 // The redundant properties were preventing typescript from seeing properties like x, y, fx, fy.
-interface Node extends D3GraphNode, d3.SimulationNodeDatum {}
+interface Node extends D3GraphNode, d3.SimulationNodeDatum {
+  fx?: number | null;
+  fy?: number | null;
+  x?: number;
+  y?: number;
+}
 
 // Fix: Correct Link interface to resolve type conflict.
 // D3GraphLink defines `source`/`target` as `string`, but d3 simulation mutates them into `Node` objects.
@@ -77,7 +82,7 @@ export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ data }) => {
       .data(nodes)
       .join("circle")
         .attr("r", (d) => d.group === 1 ? 12 : (d.isTensionNode ? 10 : 8))
-        .attr("fill", d => d.isTensionNode ? "#ef4444" : (d.group === 1 ? "#6366f1" : "#a78bfa"))
+        .attr("fill", d => d.isTensionNode ? "#ef4444" : (d.language && d.language !== 'en' ? "#10b981" : (d.group === 1 ? "#6366f1" : "#a78bfa")))
     
     const drag = (simulation: d3.Simulation<Node, undefined>) => {
         function dragstarted(event: d3.D3DragEvent<SVGCircleElement, Node, any>, d: Node) {

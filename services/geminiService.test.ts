@@ -21,10 +21,48 @@ vi.mock('@google/genai', () => {
 
 // We need to access the mock for manipulation in tests
 const { GoogleGenAI } = await import('@google/genai');
-const mockGenerateContent = (new GoogleGenAI() as any).models.generateContent;
+const mockGenerateContent = (new GoogleGenAI({}) as any).models.generateContent;
 
 
 describe('getSemanticData', () => {
+    it('should request and return cross-lingual data when targetLanguage is provided', async () => {
+        const mockData = {
+            profile: {
+                definition: 'A test definition.',
+                etymology: 'From a test.',
+                domains: ['Testing'],
+                synonyms: ['check'],
+                antonyms: ['certainty'],
+                conceptualNeighbors: ['evaluation'],
+                exampleSentences: ['This is a test.'],
+                dialecticalTensions: [],
+                targetEquivalent: 'Prueba',
+                semanticDrift: 'Prueba usually implies a physical test or proof.',
+                biasAnalysis: {
+                    homophilyIndex: 0,
+                    detectedBiases: [],
+                    orthogonalConcepts: []
+                }
+            },
+            graph: {
+                nodes: [
+                    { id: 'test', group: 1, language: 'en' },
+                    { id: 'Prueba', group: 2, language: 'es' }
+                ],
+                links: [],
+            },
+        };
+
+        mockGenerateContent.mockResolvedValue({
+            text: JSON.stringify(mockData),
+        });
+
+        const result = await getSemanticData('test', 'es');
+        expect(result.profile.targetEquivalent).toEqual('Prueba');
+        expect(result.profile.semanticDrift).toBeDefined();
+        expect(result.graph.nodes[1].language).toEqual('es');
+    });
+
     beforeAll(() => {
         vi.spyOn(console, 'error').mockImplementation(() => {});
     });

@@ -67,6 +67,7 @@ const responseSchema = {
               id: { type: Type.STRING, description: "The name of the concept/node." },
               group: { type: Type.INTEGER, description: "A number representing the node's group. The main concept should be group 1." },
               isTensionNode: { type: Type.BOOLEAN, description: "True if this node represents a dialectical contradiction or opposing viewpoint." },
+              language: { type: Type.STRING, description: "The language code of the node (e.g., 'en', 'es')." },
             },
           },
         },
@@ -98,10 +99,17 @@ const responseSchema = {
  * @throws Throws an error if the API call fails, the response is malformed, or a network error occurs.
  * The error message is tailored to the specific type of error (e.g., network, API rate limit, server error).
  */
-export const getSemanticData = async (query: string): Promise<{ profile: SemanticProfileData; graph: GraphData }> => {
+export const getSemanticData = async (query: string, targetLanguage?: string): Promise<{ profile: SemanticProfileData; graph: GraphData }> => {
     const prompt = `
 
         For the concept "${query}", generate a detailed semantic profile and a knowledge graph.
+        ${targetLanguage ? `
+        +++PluriversalTranslation(target="${targetLanguage}")
+        The user has requested cross-lingual semantic resonance into ${targetLanguage}.
+        - Provide the 'targetEquivalent' in ${targetLanguage}.
+        - Provide a 'semanticDrift' analysis explaining how the meaning shifts or what nuances are lost/gained in translation.
+        - Include at least 2 cross-lingual nodes in the knowledge graph representing the equivalent concept or related concepts in ${targetLanguage}, setting their 'language' field accordingly.
+        ` : ''}
 
         +++DCCDSchemaGuard(schema="SEMANTIC_PROFILE", enforcement="strict")
         +++MereologyRoute(relation_type="Concept-Operationalization", transitivity_check=true)
@@ -129,7 +137,7 @@ export const getSemanticData = async (query: string): Promise<{ profile: Semanti
         - Other nodes should be related concepts like synonyms, antonyms, and conceptual neighbors.
         - Links must connect the central node to the related concepts. The 'value' of the link should represent the strength of the relationship (e.g., synonyms have a higher value).
         - The graph must have at least 5 nodes (including the central one) and 4 links originating from the central node.
-        - You MUST include at least 2 "Tension Nodes" in the graph that represent these dialectical tensions. For these nodes, you must set \"isTensionNode\": true and connect them to the central node or other relevant concepts.
+        - You MUST include at least 2 "Tension Nodes" in the graph that represent these dialectical tensions. For these nodes, you must set "isTensionNode": true and connect them to the central node or other relevant concepts.
 
         - All node 'id's in links must correspond to an 'id' in the nodes list.
 
@@ -176,6 +184,8 @@ export const getSemanticData = async (query: string): Promise<{ profile: Semanti
             conceptualNeighbors: Array.isArray(profile.conceptualNeighbors) ? profile.conceptualNeighbors : [],
             exampleSentences: Array.isArray(profile.exampleSentences) ? profile.exampleSentences : [],
             dialecticalTensions: Array.isArray(profile.dialecticalTensions) ? profile.dialecticalTensions : [],
+            targetEquivalent: profile.targetEquivalent,
+            semanticDrift: profile.semanticDrift,
             biasAnalysis: profile.biasAnalysis || {
                 homophilyIndex: 0,
                 detectedBiases: [],

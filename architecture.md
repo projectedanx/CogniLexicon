@@ -28,3 +28,10 @@ The current architecture will evolve to support the "Pluriversal Knowledge Capsu
 3.  **Multi-User Dialectical Graphing:** Replace LocalStorage DB with a real-time sync engine (e.g., Supabase/CRDTs) to support shared workspaces and "Tension Nodes".
 4.  **Automated Ontology Export:** Add serialization modules (`services/exportService.ts`) to transform the internal DAG into OWL, RDF, and JSON-LD formats.
 5.  **Cognitive Bias Detection:** Implement a secondary validation pass (the "Anionic Veto") to identify homophily and prompt for orthogonal alternatives.
+
+
+### CROSS-LINGUAL SEMANTIC RESONANCE (v2.0 Epic 1)
+Implemented `+++PluriversalTranslation` PDL decorator in the Gemini Service to request high-dimensional cross-lingual mapping.
+- **AI Synergic Value:** The LLM computes the exact "semantic drift" (translation gaps, lost nuance).
+- **Human Synergic Value:** The user is visually presented with the `targetEquivalent` and the `semanticDrift` holding an epistemic `[∇]` marker, allowing the human to subjectively interpret the cultural tension that strict algorithmic mapping saponifies.
+- **Topological Visuals:** The D3 Graph maps cross-lingual concepts in emerald green (`#10b981`) contrasting against English concepts, explicitly maintaining domain separation.

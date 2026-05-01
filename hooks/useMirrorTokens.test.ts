@@ -15,7 +15,7 @@ describe('useMirrorTokens', () => {
     });
 
     it('should load tokens from localStorage on initialization', () => {
-        const mockTokens: MirrorToken[] = [{ name: 'Test Token', timestamp: '12345' }];
+        const mockTokens: MirrorToken[] = [{ name: 'Test Token', concept: 'Test Concept' }];
         window.localStorage.setItem('cogniLexiconMirrorTokens', JSON.stringify(mockTokens));
 
         const { result } = renderHook(() => useMirrorTokens());
@@ -24,7 +24,7 @@ describe('useMirrorTokens', () => {
 
     it('should add a new token', () => {
         const { result } = renderHook(() => useMirrorTokens());
-        const newToken: MirrorToken = { name: 'New Token', timestamp: '67890' };
+        const newToken: MirrorToken = { name: 'New Token', concept: 'Test Concept' };
 
         act(() => {
             result.current.addToken(newToken);
@@ -36,8 +36,8 @@ describe('useMirrorTokens', () => {
 
     it('should not add a duplicate token (case-insensitive)', () => {
         const { result } = renderHook(() => useMirrorTokens());
-        const token1: MirrorToken = { name: 'Duplicate', timestamp: '1' };
-        const token2: MirrorToken = { name: 'duplicate', timestamp: '2' };
+        const token1: MirrorToken = { name: 'Duplicate', concept: 'Test Concept' };
+        const token2: MirrorToken = { name: 'duplicate', concept: 'Test Concept' };
 
         act(() => {
             result.current.addToken(token1);
@@ -51,8 +51,8 @@ describe('useMirrorTokens', () => {
 
     it('should remove a token', () => {
         const { result } = renderHook(() => useMirrorTokens());
-        const token1: MirrorToken = { name: 'Token 1', timestamp: '1' };
-        const token2: MirrorToken = { name: 'Token 2', timestamp: '2' };
+        const token1: MirrorToken = { name: 'Token 1', concept: 'Test Concept' };
+        const token2: MirrorToken = { name: 'Token 2', concept: 'Test Concept' };
 
         act(() => {
             result.current.addToken(token1);
