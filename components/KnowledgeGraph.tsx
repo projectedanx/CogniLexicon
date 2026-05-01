@@ -76,8 +76,8 @@ export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ data }) => {
       .selectAll<SVGCircleElement, Node>("circle")
       .data(nodes)
       .join("circle")
-        .attr("r", (d) => d.group === 1 ? 12 : 8)
-        .attr("fill", d => d.group === 1 ? '#6366f1' : '#a78bfa');
+        .attr("r", (d) => d.group === 1 ? 12 : (d.isTensionNode ? 10 : 8))
+        .attr("fill", d => d.isTensionNode ? "#ef4444" : (d.group === 1 ? "#6366f1" : "#a78bfa"))
     
     const drag = (simulation: d3.Simulation<Node, undefined>) => {
         function dragstarted(event: d3.D3DragEvent<SVGCircleElement, Node, any>, d: Node) {
