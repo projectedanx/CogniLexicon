@@ -66,7 +66,19 @@ export const SemanticProfile: React.FC<SemanticProfileProps> = ({ data, word }) 
         <p className="text-gray-300 italic">{data.etymology}</p>
       </Section>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+
+      {data.targetEquivalent && (
+        <Section title="Cross-Lingual Resonance">
+          <div className="bg-indigo-900/20 p-4 rounded-md border border-indigo-800/50">
+             <p className="text-gray-200 mb-2"><strong>Target Equivalent:</strong> <span className="text-indigo-400">{data.targetEquivalent}</span></p>
+             {data.semanticDrift && (
+                 <p className="text-gray-300"><strong>[∇] Semantic Drift:</strong> {data.semanticDrift}</p>
+             )}
+          </div>
+        </Section>
+      )}
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
         <ListSection title="Domains" items={data.domains} />
         <ListSection title="Conceptual Neighbors" items={data.conceptualNeighbors} />
         <ListSection title="Synonyms" items={data.synonyms} />

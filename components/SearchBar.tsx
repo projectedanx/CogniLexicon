@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SearchIcon } from './icons/SearchIcon';
 
 interface SearchBarProps {
-  onSearch: (query: string) => void;
+  onSearch: (query: string, targetLanguage?: string) => void;
   isLoading: boolean;
 }
 
@@ -19,23 +19,32 @@ interface SearchBarProps {
  */
 export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => {
   const [query, setQuery] = useState('');
+  const [targetLanguage, setTargetLanguage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim() && !isLoading) {
-      onSearch(query);
+      onSearch(query, targetLanguage.trim() !== '' ? targetLanguage : undefined);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto">
-      <div className="relative">
+    <form onSubmit={handleSubmit} className="w-full max-w-2xl mx-auto flex flex-col space-y-3">
+      <div className="relative flex space-x-2">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter a word or concept..."
-          className="w-full pl-5 pr-12 py-3 bg-gray-800 border border-gray-700 rounded-full text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow duration-200"
+          className="flex-grow pl-5 pr-12 py-3 bg-gray-800 border border-gray-700 rounded-full text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow duration-200"
+          disabled={isLoading}
+        />
+        <input
+          type="text"
+          value={targetLanguage}
+          onChange={(e) => setTargetLanguage(e.target.value)}
+          placeholder="Target Language (Optional)"
+          className="w-1/3 px-4 py-3 bg-gray-800 border border-gray-700 rounded-full text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow duration-200"
           disabled={isLoading}
         />
         <button
