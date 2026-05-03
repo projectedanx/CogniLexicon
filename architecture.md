@@ -22,6 +22,10 @@ Currently Managed Agents:
 The repository integrates the Cognitive Bytecode standard outlined in `LEXICON.md` (DRP-LEXICON-992). Core components like the Gemini API prompt utilize Progressive Disclosure Level (PDL) decorators (`+++DCCDSchemaGuard`, `+++MereologyRoute`, `+++ContextLock`) to mitigate Lexical Saponification and enforce topological bridging across domains.
 
 ## FUTURE STATE ARCHITECTURE (V2.0)
+
+### PROJECT AURELIUS: UNIFIED META-PROMPTING API
+Integration of the AURELIUS-SOVEREIGN Blueprint to establish a causal chain of control over non-Euclidean latent space navigation. This includes a Plausibility Oracle for PBR-validation of physical constraints, an autonomous Prompt Engineering Catalyst, dynamic Provenance Trail tracking, and Hyper-Spectral Integrator for rendering fidelity.
+
 The current architecture will evolve to support the "Pluriversal Knowledge Capsule" framework through 5 key epics:
 1.  **Cross-Lingual Semantic Resonance:** Extend `services/geminiService.ts` to query multi-lingual embedding dimensions. Update `GraphData` schema to support language tags.
 2.  **Temporal Concept Evolution:** Introduce a timeline state in `App.tsx` and extend the API layer to request chronological segmentation.
