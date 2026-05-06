@@ -78,6 +78,7 @@ This project was generated from an AI Studio app. You can view your app in AI St
 ## Product Roadmap (V2.0)
 
 - **Project VULCAN (Topological Causal Sculpting):** Integration of a Tier 3 Sovereign Agent Node to enforce strict Domain-Driven Design boundaries, evaluate trade-offs mathematically, and prevent semantic saponification in architectural evolution.
+- **Project VIPER (Visual Intent & Physical Execution Router):** Integration of a Tier 2 Sovereign Agent to deterministically translate human affective visual desire into physically grounded Optical State Matrices (OSM). Enforces Hardware-Forced Physicality and RCC-8 Spatial Geometry to eliminate Semantic Saponification in image generation.
 
 -   **Project Aurelius (Unified Meta-Prompting API):** Establish causal control over generative latent spaces using geometric primitives (Phantom Dimensions), real-time physical plausibility simulation loops, and rigorous training data provenance tracking.
 

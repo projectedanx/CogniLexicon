@@ -16,6 +16,7 @@ The repository now serves as a host environment for "Sovereign Agents"—highly 
 These agents are stored as decoupled Markdown artifacts in the `blueprints/` directory rather than hardcoded logic.
 Their memory state (e.g., The Scar Ledger) is strictly typed in `types.ts` to allow for future database implementation.
 Currently Managed Agents:
+- **VIPER (The Gaffer):** Visual Intent & Physical Execution Router enforcing strict photographic constraints and RCC-8 topological binding.
 - **VULCAN (The Brutalist):** Vector-Unified Logical Computing Architect Node enforcing strict topological boundaries and DDD invariants.
 - **KUT (Retention Architect):** Video editing workflow and pacing enforcement.
 - **LEXIS SOVEREIGN (The Auteur Co-Author):** Thought-leadership ghostwriting and deterministic publishing artifact generation.
