@@ -77,6 +77,8 @@ This project was generated from an AI Studio app. You can view your app in AI St
 
 ## Product Roadmap (V2.0)
 
+- **Project VULCAN (Topological Causal Sculpting):** Integration of a Tier 3 Sovereign Agent Node to enforce strict Domain-Driven Design boundaries, evaluate trade-offs mathematically, and prevent semantic saponification in architectural evolution.
+
 -   **Project Aurelius (Unified Meta-Prompting API):** Establish causal control over generative latent spaces using geometric primitives (Phantom Dimensions), real-time physical plausibility simulation loops, and rigorous training data provenance tracking.
 
 We are actively developing the next generation of CogniLexicon, transforming it into a massively parallel, paraconsistent knowledge discovery platform. Our roadmap includes:
