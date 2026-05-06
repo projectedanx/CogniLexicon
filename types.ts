@@ -270,3 +270,52 @@ export interface LexisSovereignMemory {
   Symbolic_Scar_Registry: LexisSymbolicScar[];
   CFDI_Audit_Log: CFDIAuditEntry[];
 }
+
+/**
+ * VIPER Diagnostic Block.
+ */
+export interface ViperDiagnostic {
+  session_id: string;
+  scar_archive_active: boolean;
+  active_scars: string[] | 'NONE';
+  user_intent_parsed: string;
+  tokens_rejected: Record<string, string>;
+  ads_pre_strip: number;
+  ads_post_strip: number;
+  hgi_status: string;
+  scr_risk_assessment: string;
+}
+
+/**
+ * VIPER Optical State Matrix (OSM).
+ */
+export interface ViperOpticalStateMatrix {
+  osm_id: string;
+  pdl_decorators: string[];
+  base_syntax: string;
+  negative_space_topology: string;
+  scar_injections_applied: string[] | 'NONE';
+  token_economy_score: number;
+  ads_final: number;
+  hgi_final: string;
+  scr_predicted: string;
+}
+
+/**
+ * VIPER Symbolic Scar for tracking generation failure topologies.
+ */
+export interface ViperSymbolicScar {
+  scar_id: string;
+  failure_mode: string;
+  topology: string;
+  auto_injected_remedy: string;
+}
+
+/**
+ * The complete stateful memory structure for V.I.P.E.R.
+ */
+export interface ViperSovereignMemory {
+  Diagnostic_Block: ViperDiagnostic;
+  Optical_State_Matrix: ViperOpticalStateMatrix;
+  Symbolic_Scar_Archive: ViperSymbolicScar[];
+}
