@@ -49,3 +49,9 @@
   failure_mode: "Loss of Spatial Reasoning and physical plausibility; generation defaults to the mean of pre-training distributions (Semantic Saponification), failing to render accurate non-Euclidean structures."
   geometric_coordinates: "[causal_intent_gap_vector_007]"
   alternative_applied: "Introduced the AURELIUS SOVEREIGN architecture (Unified Meta-Prompting API) featuring 'Phantom Dimensions' for explicitly encoding Riemannian curvature and a 'Plausibility Oracle' for PBR-validation of physical constraints."
+- id: SCAR-008
+  timestamp: 2026-07-01T12:00:00Z
+  rejected_approach: "Allowing task-scoped LLMs (Tier-1) to dictate system-level architecture during code generation."
+  failure_mode: "Semantic Saponification of boundaries; emergence of Shared Database and Distributed Monolith anti-patterns due to context window optimization."
+  geometric_coordinates: "[topological_saponification_vector_008]"
+  alternative_applied: "Introduced the VULCAN Tier 3 Sovereign Node. Enforced the Mereological Mandate and CFDI Brake to physically block coder agents from violating defined topological constraints, relying on Human/AI inversion for architectural emergence."
