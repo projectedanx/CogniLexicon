@@ -27,7 +27,8 @@ const responseSchema = {
         synonyms: { type: Type.ARRAY, items: { type: Type.STRING }, description: "A list of 3-5 synonyms." },
         antonyms: { type: Type.ARRAY, items: { type: Type.STRING }, description: "A list of 3-5 antonyms." },
         conceptualNeighbors: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Related but not synonymous concepts." },
-
+        targetEquivalent: { type: Type.STRING, description: "The closest equivalent concept in the target language." },
+        semanticDrift: { type: Type.STRING, description: "Analysis of the semantic drift or lost meaning between the source and target concepts." },
         exampleSentences: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Example sentences demonstrating usage." },
         dialecticalTensions: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Irreconcilable contradictions or dialectical tensions related to the concept." },
         biasAnalysis: {
@@ -94,9 +95,10 @@ const responseSchema = {
  * It then calls the Gemini API, parses the JSON response, and performs validation and normalization.
  * The function also includes robust error handling for API and network-related issues.
  *
- * @param query The word or concept to fetch semantic data for.
- * @returns A promise that resolves to an object containing the semantic profile and knowledge graph data.
- * @throws Throws an error if the API call fails, the response is malformed, or a network error occurs.
+ * @param {string} query - The word or concept to fetch semantic data for.
+ * @param {string} [targetLanguage] - Optional target language for cross-lingual resonance.
+ * @returns {Promise<{ profile: SemanticProfileData; graph: GraphData }>} A promise that resolves to an object containing the semantic profile and knowledge graph data.
+ * @throws {Error} Throws an error if the API call fails, the response is malformed, or a network error occurs.
  * The error message is tailored to the specific type of error (e.g., network, API rate limit, server error).
  */
 export const getSemanticData = async (query: string, targetLanguage?: string): Promise<{ profile: SemanticProfileData; graph: GraphData }> => {

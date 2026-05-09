@@ -5,6 +5,15 @@ interface CognitiveBiasPanelProps {
   biasData: BiasAnalysisData;
 }
 
+/**
+ * A component that displays a cognitive bias analysis panel.
+ * It visualizes the homophily index, lists detected biases with their severity,
+ * and suggests orthogonal concepts for dialectical synthesis.
+ *
+ * @param {CognitiveBiasPanelProps} props - The props for the component.
+ * @param {BiasAnalysisData} props.biasData - The data containing the bias analysis results.
+ * @returns {React.FC<CognitiveBiasPanelProps>} The cognitive bias panel component.
+ */
 export const CognitiveBiasPanel: React.FC<CognitiveBiasPanelProps> = ({ biasData }) => {
   const isHighRisk = biasData.homophilyIndex > 0.7;
 

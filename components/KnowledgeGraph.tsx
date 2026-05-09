@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { GraphData, GraphNode as D3GraphNode, GraphLink as D3GraphLink } from '../types';
@@ -84,16 +83,39 @@ export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ data }) => {
         .attr("r", (d) => d.group === 1 ? 12 : (d.isTensionNode ? 10 : 8))
         .attr("fill", d => d.isTensionNode ? "#ef4444" : (d.language && d.language !== 'en' ? "#10b981" : (d.group === 1 ? "#6366f1" : "#a78bfa")))
     
+    /**
+     * Creates a drag behavior for the d3 nodes.
+     * @param {d3.Simulation<Node, undefined>} simulation - The d3 force simulation.
+     * @returns {d3.DragBehavior<SVGCircleElement, Node, any>} The d3 drag behavior.
+     */
     const drag = (simulation: d3.Simulation<Node, undefined>) => {
+        /**
+         * Event handler for the start of a drag interaction.
+         * @param {d3.D3DragEvent<SVGCircleElement, Node, any>} event - The drag event.
+         * @param {Node} d - The node datum.
+         * @returns {void}
+         */
         function dragstarted(event: d3.D3DragEvent<SVGCircleElement, Node, any>, d: Node) {
             if (!event.active) simulation.alphaTarget(0.3).restart();
             d.fx = d.x;
             d.fy = d.y;
         }
+        /**
+         * Event handler for dragging a node.
+         * @param {d3.D3DragEvent<SVGCircleElement, Node, any>} event - The drag event.
+         * @param {Node} d - The node datum.
+         * @returns {void}
+         */
         function dragged(event: d3.D3DragEvent<SVGCircleElement, Node, any>, d: Node) {
             d.fx = event.x;
             d.fy = event.y;
         }
+        /**
+         * Event handler for the end of a drag interaction.
+         * @param {d3.D3DragEvent<SVGCircleElement, Node, any>} event - The drag event.
+         * @param {Node} d - The node datum.
+         * @returns {void}
+         */
         function dragended(event: d3.D3DragEvent<SVGCircleElement, Node, any>, d: Node) {
             if (!event.active) simulation.alphaTarget(0);
             d.fx = null;
