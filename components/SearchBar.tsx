@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { SearchIcon } from './icons/SearchIcon';
 
@@ -13,7 +12,7 @@ interface SearchBarProps {
  * The component handles its own internal state for the query text.
  *
  * @param {SearchBarProps} props The props for the component.
- * @param {function(string): void} props.onSearch - The callback function to execute when a search is submitted.
+ * @param {function(string, string?): void} props.onSearch - The callback function to execute when a search is submitted.
  * @param {boolean} props.isLoading - A flag to disable the search bar during loading.
  * @returns {React.FC<SearchBarProps>} The search bar component.
  */
@@ -21,6 +20,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
   const [query, setQuery] = useState('');
   const [targetLanguage, setTargetLanguage] = useState('');
 
+  /**
+   * Handles the submission of the search form.
+   * Prevents the default form submission and invokes the onSearch callback.
+   * @param {React.FormEvent} e - The form submission event.
+   * @returns {void}
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim() && !isLoading) {

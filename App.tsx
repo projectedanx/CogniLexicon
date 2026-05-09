@@ -31,6 +31,14 @@ const App: React.FC = () => {
   
   const { tokens, addToken, removeToken } = useMirrorTokens();
 
+  /**
+   * Handles the search action by fetching semantic data from the API.
+   * Updates the application state with the fetched data or error message.
+   *
+   * @param {string} searchQuery - The primary concept to search for.
+   * @param {string} [targetLanguage] - Optional target language for cross-lingual translation.
+   * @returns {Promise<void>} Resolves when the search process is complete.
+   */
   const handleSearch = useCallback(async (searchQuery: string, targetLanguage?: string) => {
     if (!searchQuery.trim()) return;
 
@@ -53,10 +61,21 @@ const App: React.FC = () => {
     }
   }, []);
   
+  /**
+   * Callback to load a saved mirror token concept into the main search view.
+   *
+   * @param {string} concept - The semantic concept to search for.
+   */
   const handleLoadToken = useCallback((concept: string) => {
     handleSearch(concept);
   }, [handleSearch]);
 
+  /**
+   * Component that renders the initial welcome screen.
+   * Displays the title, subtitle, and the mirror token manager.
+   *
+   * @returns {JSX.Element} The welcome screen component structure.
+   */
   const WelcomeScreen = () => (
     <div className="text-center p-4 md:p-8">
       <div className="max-w-2xl mx-auto">
@@ -76,6 +95,12 @@ const App: React.FC = () => {
     </div>
   );
 
+  /**
+   * Component that renders the view switcher buttons.
+   * Allows toggling between the semantic profile and knowledge graph views.
+   *
+   * @returns {JSX.Element} The view switcher component structure.
+   */
   const ViewSwitcher = () => (
     <div className="flex justify-center space-x-2 my-6">
       <button

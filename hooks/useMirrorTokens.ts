@@ -28,6 +28,11 @@ export const useMirrorTokens = () => {
         }
     }, []);
 
+    /**
+     * Saves the provided tokens array to local storage and updates state.
+     * @param {MirrorToken[]} newTokens - The new array of tokens to save.
+     * @returns {void}
+     */
     const saveTokens = useCallback((newTokens: MirrorToken[]) => {
         try {
             setTokens(newTokens);
@@ -37,6 +42,11 @@ export const useMirrorTokens = () => {
         }
     }, []);
 
+    /**
+     * Adds a new token to the list, verifying it is not a duplicate.
+     * @param {MirrorToken} token - The token object to add.
+     * @returns {void}
+     */
     const addToken = useCallback((token: MirrorToken) => {
         let isDuplicate = false;
         try {
@@ -54,6 +64,11 @@ export const useMirrorTokens = () => {
         saveTokens(newTokens);
     }, [tokens, saveTokens]);
 
+    /**
+     * Removes a token from the list by its name.
+     * @param {string} tokenName - The name of the token to remove.
+     * @returns {void}
+     */
     const removeToken = useCallback((tokenName: string) => {
         const newTokens = tokens.filter(token => token.name !== tokenName);
         saveTokens(newTokens);

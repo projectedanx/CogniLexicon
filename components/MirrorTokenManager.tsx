@@ -25,6 +25,12 @@ export const MirrorTokenManager: React.FC<MirrorTokenManagerProps> = ({ tokens, 
     const [name, setName] = useState('');
     const [concept, setConcept] = useState('');
 
+    /**
+     * Handles the submission of the new token form.
+     * Prevents default submission, validates input, and calls onAddToken.
+     * @param {React.FormEvent} e - The form event.
+     * @returns {void}
+     */
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (name.trim() && concept.trim()) {
