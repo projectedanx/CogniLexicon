@@ -319,3 +319,27 @@ export interface ViperSovereignMemory {
   Optical_State_Matrix: ViperOpticalStateMatrix;
   Symbolic_Scar_Archive: ViperSymbolicScar[];
 }
+
+/**
+ * Zachman Framework Structural Schema for the PM Persona.
+ */
+export interface ZachmanFrameworkSchema {
+  data_entity_models: Record<string, string>;
+  function_process_models: Record<string, string>;
+  network_node_models: Record<string, string>;
+  people_organization_models: Record<string, string>;
+  time_event_models: Record<string, string>;
+  motivation_goal_models: Record<string, string>;
+}
+
+/**
+ * PM Persona Operational Workflow Schema.
+ */
+export interface PMOperationalWorkflow {
+  workflow_id: string;
+  zachman_mapping: ZachmanFrameworkSchema;
+  confidence_score: number;
+  topological_derivative_dissonance: number;
+  golden_scar_ratio_applied: boolean;
+  epsilon_tolerance_debt: number;
+}
