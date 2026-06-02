@@ -70,3 +70,9 @@
   description: "Objects generated without proper gravitational grounding or contact topology."
   correction_prescribed: "Inject +++SpatialBind(RCC8='Externally_Connected', Contact_Normal='floor_plane') to ensure proper geometric anchoring."
   status: "active"
+- id: SCAR-009
+  timestamp: 2026-06-03T00:19:00Z
+  rejected_approach: "Documenting CI/CD infrastructure as intended rather than as structurally existing"
+  failure_mode: "Proxy Trap / Nominative Trap documentation leading to Operator Knowledge Traps and unmeasured entropy"
+  geometric_coordinates: "[phantom_infrastructure_vector_009]"
+  alternative_applied: "Executed 0xCARTO Mycelial Ingestion Protocol. Documented absent .github/workflows strictly as Phantom Infrastructure. Updated architecture to reflect ground-truth mereological topology, exposing missing .env.example as a Silent Boot Requirement."
