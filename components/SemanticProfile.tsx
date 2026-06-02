@@ -96,6 +96,25 @@ export const SemanticProfile: React.FC<SemanticProfileProps> = ({ data, word }) 
         </Section>
       )}
 
+
+      {data.orthogonalIsomorphisms && data.orthogonalIsomorphisms.length > 0 && (
+        <Section title="Dialectical Synthesis: Structural Isomorphisms">
+          <div className="space-y-3">
+            {data.orthogonalIsomorphisms.map((iso, index) => (
+              <div key={index} className="bg-emerald-900/20 p-4 rounded-md border border-emerald-800/50">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-bold text-emerald-400">Domain: {iso.domain}</span>
+                  <span className="text-xs font-mono text-emerald-500/70 border border-emerald-500/30 px-2 py-0.5 rounded">
+                    AT: {iso.AT_Score}
+                  </span>
+                </div>
+                <p className="text-gray-300">{iso.mapping}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
       <Section title="Example Sentences">
         <ul className="list-disc list-inside space-y-2 text-gray-300">
           {data.exampleSentences.map((sentence, index) => (

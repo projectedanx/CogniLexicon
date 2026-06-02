@@ -51,7 +51,15 @@ export interface BiasAnalysisData {
   orthogonalConcepts: string[];
 }
 
+export interface OrthogonalIsomorphism {
+  domain: string;
+  mapping: string;
+  AT_Score: number;
+}
+
 export interface SemanticProfileData {
+  /** Structural mappings to completely orthogonal domains (Topological Orthogonality Hypothesis) */
+  orthogonalIsomorphisms?: OrthogonalIsomorphism[];
   /** Cognitive bias analysis. */
   biasAnalysis?: BiasAnalysisData;
   /** A concise definition of the concept. */
