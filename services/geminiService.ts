@@ -51,6 +51,19 @@ const responseSchema = {
             },
             orthogonalConcepts: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Concepts to counter the biases." }
           }
+        },
+        orthogonalIsomorphisms: {
+          type: Type.ARRAY,
+          description: "Mappings to structurally orthogonal domains",
+          items: {
+            type: Type.OBJECT,
+            required: ["domain", "mapping", "AT_Score"],
+            properties: {
+              domain: { type: Type.STRING, description: "The orthogonal domain" },
+              mapping: { type: Type.STRING, description: "The structural isomorphism" },
+              AT_Score: { type: Type.NUMBER, description: "Aesthetic Tension score (0.0 to 1.0)" }
+            }
+          }
         }
 
       },
@@ -118,6 +131,7 @@ export const getSemanticData = async (query: string, targetLanguage?: string): P
         +++ContextLock(anchor="QUERY_CONCEPT", refresh_interval=2048)
         +++ParaconsistentLens[Contradiction -> Opportunity]
         +++EpistemicEscrow(cfd_threshold=0.15)
+        +++EntropyAnchor(level="High", focus="orthogonal_domain_intersections")
 
         The semantic profile must include:
 
@@ -186,6 +200,7 @@ export const getSemanticData = async (query: string, targetLanguage?: string): P
             conceptualNeighbors: Array.isArray(profile.conceptualNeighbors) ? profile.conceptualNeighbors : [],
             exampleSentences: Array.isArray(profile.exampleSentences) ? profile.exampleSentences : [],
             dialecticalTensions: Array.isArray(profile.dialecticalTensions) ? profile.dialecticalTensions : [],
+            orthogonalIsomorphisms: Array.isArray(profile.orthogonalIsomorphisms) ? profile.orthogonalIsomorphisms : [],
             targetEquivalent: profile.targetEquivalent,
             semanticDrift: profile.semanticDrift,
             biasAnalysis: profile.biasAnalysis || {

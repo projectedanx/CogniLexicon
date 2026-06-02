@@ -111,3 +111,4 @@ We are actively developing the next generation of CogniLexicon, transforming it 
 -   **Cognitive Bias Detection:** Continuous optimization of automated identification and flagging of homophily, echo chambers, and logical fallacies within generated output.
 
 *See `product_features.md` for detailed user stories and acceptance criteria.*
+- **Ontological Isomorphism Engine:** Implements PAT-006 (Topological Orthogonality Hypothesis) by injecting `+++EntropyAnchor` decorators to map high-surprisal analogies across non-overlapping domain centroids (e.g., fluid dynamics to tokenomics).
