@@ -4,24 +4,28 @@ import { getSemanticData } from './geminiService';
 // Mock the @google/genai module
 vi.mock('@google/genai', () => {
   const mockGenerateContent = vi.fn();
+  // Using function instead of arrow function for constructor
   return {
-    GoogleGenAI: vi.fn(() => ({
-      models: {
-        generateContent: mockGenerateContent,
-      },
-    })),
+    GoogleGenAI: function() {
+      return {
+        models: {
+          generateContent: mockGenerateContent,
+        },
+      };
+    },
     Type: {
         OBJECT: 'object',
         STRING: 'string',
         ARRAY: 'array',
         INTEGER: 'integer',
+        BOOLEAN: 'boolean'
     }
   };
 });
 
 // We need to access the mock for manipulation in tests
 const { GoogleGenAI } = await import('@google/genai');
-const mockGenerateContent = (new GoogleGenAI({}) as any).models.generateContent;
+const mockGenerateContent = (new (GoogleGenAI as any)()).models.generateContent;
 
 
 describe('getSemanticData', () => {
@@ -36,11 +40,9 @@ describe('getSemanticData', () => {
                 conceptualNeighbors: ['evaluation'],
                 exampleSentences: ['This is a test.'],
                 orthogonalIsomorphisms: [],
-                targetEquivalent: undefined,
-                semanticDrift: undefined,
-                dialecticalTensions: [],
                 targetEquivalent: 'Prueba',
                 semanticDrift: 'Prueba usually implies a physical test or proof.',
+                dialecticalTensions: [],
                 biasAnalysis: {
                     homophilyIndex: 0,
                     detectedBiases: [],
@@ -91,7 +93,7 @@ describe('getSemanticData', () => {
                 orthogonalIsomorphisms: [],
                 targetEquivalent: undefined,
                 semanticDrift: undefined,
-            dialecticalTensions: [],
+                dialecticalTensions: [],
                 biasAnalysis: {
                     homophilyIndex: 0,
                     detectedBiases: [],
@@ -166,7 +168,7 @@ describe('getSemanticData', () => {
                 orthogonalIsomorphisms: [],
                 targetEquivalent: undefined,
                 semanticDrift: undefined,
-            dialecticalTensions: [],
+                dialecticalTensions: [],
                 biasAnalysis: {
                     homophilyIndex: 0,
                     detectedBiases: [],

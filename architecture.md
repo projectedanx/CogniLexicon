@@ -1,51 +1,77 @@
-Root: React/Vite
-├── Auth: None — Not implemented
-├── DB: LocalStorage — useMirrorTokens hook
-├── API: Gemini API — REST via @google/genai
-├── UI: Tailwind CSS — standard utility tokens
-├── Infra: AI Studio — Static build
-└── Sovereign Agents: Decoupled Blueprints (e.g., KUT-2.0.1-SOVEREIGN, LEXIS-SOVEREIGN)
-DATA FLOWS:
-User → [UI] → [API] → [UI] → [DB]
-User → [Agent Blueprint] → [LLM Context] → [Structured Output] → [Scar Ledger Schema]
-MEREOLOGICAL MAP:
+# 0xCARTO Architecture Topology
+0xCARTO Synthesis Timestamp: 2026-06-03T00:19:00Z
+
+## MEREOLOGICAL MAP
+The repository functions as a decoupled execution environment.
+
 [Component] ∈ [Service] ∈ [Module] ∈ [Root]
 [Sovereign Blueprint] ∈ [Agent Layer] ∈ [Root]
-## SOVEREIGN AGENT ARCHITECTURE
-The repository now serves as a host environment for "Sovereign Agents"—highly specialized, persona-driven LLM configurations.
-These agents are stored as decoupled Markdown artifacts in the `blueprints/` directory rather than hardcoded logic.
-Their memory state (e.g., The Scar Ledger) is strictly typed in `types.ts` to allow for future database implementation.
-Currently Managed Agents:
-- **VIPER (The Gaffer):** Visual Intent & Physical Execution Router enforcing strict photographic constraints and RCC-8 topological binding.
-- **VULCAN (The Brutalist):** Vector-Unified Logical Computing Architect Node enforcing strict topological boundaries and DDD invariants.
-- **KUT (Retention Architect):** Video editing workflow and pacing enforcement.
-- **LEXIS SOVEREIGN (The Auteur Co-Author):** Thought-leadership ghostwriting and deterministic publishing artifact generation.
-## COGNITIVE BYTECODE & PROGRESSIVE DISCLOSURE
-The repository integrates the Cognitive Bytecode standard outlined in `LEXICON.md` (DRP-LEXICON-992). Core components like the Gemini API prompt utilize Progressive Disclosure Level (PDL) decorators (`+++DCCDSchemaGuard`, `+++MereologyRoute`, `+++ContextLock`) to mitigate Lexical Saponification and enforce topological bridging across domains.
 
-## FUTURE STATE ARCHITECTURE (V2.0)
+## TIER 2: Architecture Topology Map
+Generated via Mycelial CI Trace (DRP_7_PATTERN_MODEL).
+Betti-1 Cycle Status: CLEAN
 
-### PROJECT AURELIUS: UNIFIED META-PROMPTING API
-Integration of the AURELIUS-SOVEREIGN Blueprint to establish a causal chain of control over non-Euclidean latent space navigation. This includes a Plausibility Oracle for PBR-validation of physical constraints, an autonomous Prompt Engineering Catalyst, dynamic Provenance Trail tracking, and Hyper-Spectral Integrator for rendering fidelity.
+```mermaid
+graph TD
+    subgraph ENV["Environment Layer (Vite Config / Process.env)"]
+        E1["vite.config.ts<br/>Defines process.env.API_KEY"]
+        E2["SILENT_REQUIRED_ENV: API_KEY<br/>⚠️ Missing .env.example"]
+    end
 
-The current architecture will evolve to support the "Pluriversal Knowledge Capsule" framework through 5 key epics:
-1.  **Cross-Lingual Semantic Resonance:** Extend `services/geminiService.ts` to query multi-lingual embedding dimensions. Update `GraphData` schema to support language tags.
-2.  **Temporal Concept Evolution:** Introduce a timeline state in `App.tsx` and extend the API layer to request chronological segmentation.
-3.  **Multi-User Dialectical Graphing:** Replace LocalStorage DB with a real-time sync engine (e.g., Supabase/CRDTs) to support shared workspaces and "Tension Nodes".
-4.  **Automated Ontology Export:** Add serialization modules (`services/exportService.ts`) to transform the internal DAG into OWL, RDF, and JSON-LD formats.
-5.  **Cognitive Bias Detection:** Implement a secondary validation pass (the "Anionic Veto") to identify homophily and prompt for orthogonal alternatives.
+    subgraph SOVEREIGN["Sovereign Agent Layer (blueprints/)"]
+        S1["VIPER-SOVEREIGN.md"]
+        S2["VULCAN-1.0.0-SOVEREIGN.md"]
+        S3["AURELIUS-SOVEREIGN.md"]
+        S4["LEXIS-SOVEREIGN.md"]
+        S5["0xCARTO-SOVEREIGN.md"]
+    end
 
+    subgraph APP["Application Layer (src/)"]
+        A1["Entry Point<br/>src/index.tsx"]
+        A2["Core Service<br/>services/geminiService.ts"]
+        A3["D3 Graph Component<br/>components/KnowledgeGraph.tsx"]
+        A4["State Hook<br/>hooks/useMirrorTokens.ts"]
+    end
 
-### CROSS-LINGUAL SEMANTIC RESONANCE (v2.0 Epic 1)
-Implemented `+++PluriversalTranslation` PDL decorator in the Gemini Service to request high-dimensional cross-lingual mapping.
-- **AI Synergic Value:** The LLM computes the exact "semantic drift" (translation gaps, lost nuance).
-- **Human Synergic Value:** The user is visually presented with the `targetEquivalent` and the `semanticDrift` holding an epistemic `[∇]` marker, allowing the human to subjectively interpret the cultural tension that strict algorithmic mapping saponifies.
-- **Topological Visuals:** The D3 Graph maps cross-lingual concepts in emerald green (`#10b981`) contrasting against English concepts, explicitly maintaining domain separation.
+    subgraph CI["CI/CD Layer"]
+        C1["PHANTOM_INFRASTRUCTURE<br/>⚠️ No .github/workflows detected"]
+    end
 
-### AXIOM SOVEREIGN: Emergence and The Anionic Veto
-Integration of the Axiom Sovereign Blueprint establishes a rigorous standard for documentation and code generation via an inverted interaction model. The AI acts as a constraint engine rather than an oracle. By utilizing the **Anionic Veto**, the system refuses to generate structurally unsound or ambiguous output, halting operations via **Epistemic Escrow** to force human clarification. This ensures emergence: the combination of human subjective intent with the AI's objective schema enforcement and bias detection.
+    E1 -->|injects| APP
+    E2 --> E1
+    S1 -.->|Contextual injection| APP
+    S2 -.->|Contextual injection| APP
+    S3 -.->|Contextual injection| APP
+    S4 -.->|Contextual injection| APP
+    S5 -.->|Contextual injection| APP
+    A1 --> A2 & A3 & A4
+    A2 -->|External REST| GENAI["Google Gemini API"]
+    A4 -->|Reads/Writes| LOCAL_DB["Browser LocalStorage"]
 
-### ONTOLOGICAL ISOMORPHISM ENGINE (v2.0 Epic 6)
-Operationalizes the **Topological Orthogonality Hypothesis (PAT-006)**. By injecting `+++EntropyAnchor(level="High", focus="orthogonal_domain_intersections")` into the generative prompt, the LLM is forced to bridge concepts across structurally non-overlapping domains (e.g., mapping "API Routing" to "Protein Folding").
-- **AI Synergic Value:** The AI maps high-dimensional latent space relations that evade standard linguistic proximity search, identifying deep structural isomorphisms across disparate fields.
-- **Human Synergic Value:** The user is confronted with a high-surprisal "Dialectical Synthesis" panel containing non-obvious mappings. This disrupts standard associative thinking, creating high cognitive tension intended to spark novel architectural solutions.
+    classDef warning fill:#fef3c7,stroke:#d97706,color:#000
+    classDef golden fill:#fde68a,stroke:#b45309,color:#000
+    classDef phantom fill:#fee2e2,stroke:#dc2626,color:#000
+
+    class E2,C1 phantom
+    class S1,S2,S3,S4,S5 golden
+```
+
+## DATA FLOWS
+1. User → [UI] → [API] → [UI] → [DB]
+2. User → [Agent Blueprint] → [LLM Context] → [Structured Output] → [Scar Ledger Schema]
+
+## DEPENDENCY MATRIX (L3 Thermodynamic Lens)
+| Dependency | Version Pin | Production? | CI Invoked? | Entropy Vector |
+| :--- | :--- | :--- | :--- | :--- |
+| `react` | `^19.2.0` (semver range) | ✅ Yes | ❌ Phantom | ⚠️ MEDIUM — range allows drift |
+| `@google/genai` | `^1.25.0` (semver range) | ✅ Yes | ❌ Phantom | ⚠️ MEDIUM — range allows drift |
+| `d3` | `^7.9.0` (semver range) | ✅ Yes | ❌ Phantom | ⚠️ MEDIUM — range allows drift |
+| `typescript` | `~5.8.2` (tilde pin) | ❌ Dev only | ❌ Phantom | ⚠️ LOW/MEDIUM |
+| `vite` | `^6.4.2` (semver range) | ❌ Dev only | ❌ Phantom | ⚠️ MEDIUM |
+
+## RUNBOOK
+1. Clone the repository.
+2. `npm install`
+3. ⚠️ **SILENT_REQUIRED_ENV:** Create `.env.local` and set `API_KEY=your_key`.
+4. `npm run test -- --run`
+5. `npm run build`
